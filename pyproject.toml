@@ -1,0 +1,35 @@
+[project]
+name = "illate-parity"
+version = "0.1.0"
+description = "Is a cheaper model as good as the one you run now? Accuracy with confidence intervals and a non-inferiority parity check."
+readme = "README.md"
+license = "Apache-2.0"
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.26"]
+
+[project.urls]
+Homepage = "https://illate.dev"
+
+[project.scripts]
+illate-parity = "illate_parity.cli:main"
+
+[dependency-groups]
+dev = ["pytest>=8", "ruff>=0.6", "scikit-learn>=1.4"]  # tests cross-check metrics against sklearn
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/illate_parity"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

@@ -1,0 +1,14 @@
+name: test
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -e . pytest ruff scikit-learn
+      - run: ruff check . && ruff format --check .
+      - run: pytest -q
+      - run: illate-parity check --gold examples/banking77/test.jsonl --current examples/banking77/tfidf.preds.jsonl --candidate examples/banking77/qwen3-4b-lora.preds.jsonl --labels examples/banking77/labels.json --out out/example
