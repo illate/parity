@@ -12,7 +12,7 @@ API model. No GPU, no API keys, one dependency (NumPy).
 ## Install
 
 ```bash
-pip install git+https://github.com/illate/parity
+pip install illate-parity
 ```
 
 ## Use
@@ -118,7 +118,7 @@ the gold file and the predicted `label`:
 
 ### 3. Check each candidate against the current model
 
-    pip install git+https://github.com/illate/parity
+    pip install illate-parity
     illate-parity check --gold test.jsonl \
       --current current.preds.jsonl --candidate luna.preds.jsonl \
       --margin 0.03 --out out/luna
